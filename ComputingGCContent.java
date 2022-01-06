@@ -30,20 +30,27 @@ public class ComputingGCContent {
 			line = line.replace("\n", "");
 			line = line.replace(">", " ");
 			input += line;
-		}
+		}		
 		
 		String highestID = "";
 		double highestContent = 0;
 		Scanner data = new Scanner(input);
 		
+		/* each DNA string ID will be copied into the ID variable and
+		 * each DNA string will be copied into the seq variable
+		 */
 		while (data.hasNext()) {
 			String line = data.next();
 			String ID = line.substring(0, 13);
 			String seq = line.substring(13, line.length());
+			double gcContent = getPercent(seq);
 			
-			if (getPercent(seq) > highestContent) {
+			/* if this iteration of DNA has the highest GC-content,
+			 * then copy those values into the corresponding variables
+			 */
+			if (gcContent > highestContent) {
 				highestID = ID;
-				highestContent = getPercent(seq);
+				highestContent = gcContent;
 			}
 		}
 		System.out.println(highestID);
@@ -52,15 +59,19 @@ public class ComputingGCContent {
 	}
 	
 	public static double getPercent(String seq) {
+		
+		/* count each guanine and cytosine nucleobase in the DNA string and 
+		 * return the GC-content percentage back to main()
+		 */
 		int count = 0;
-		int total = seq.length();
+		int length = seq.length();
 
-		for (int i = 0; i < total - 1; i++) {
+		for (int i = 0; i < length - 1; i++) {
 			if (seq.charAt(i) == 'G' || seq.charAt(i) == 'C') {
 				count++;
 			}
 		}
 		
-		return (double) count / total * 100;
+		return (double) count / length * 100;
 	}
 }

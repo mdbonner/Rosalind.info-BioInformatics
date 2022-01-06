@@ -22,6 +22,9 @@ public class CountingDNANucleotides {
 		
 		int[] array = new int[4];
 		
+		/* loop through each char in the DNA string and 
+		 * increment the corresponding element of the array
+		 */
 		for (int i = 0; i < dna.length(); i++) {
 			if (dna.charAt(i) == 'A') {
 				array[0]++;

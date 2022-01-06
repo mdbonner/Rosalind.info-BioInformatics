@@ -18,6 +18,8 @@ public class TranscribingDNAIntoRNA {
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner file = new Scanner(new File("rosalind_rna.txt"));
 		String dna = file.next();
+		
+		// transcribe the DNA string by replacing thymine with uracil
 		String rna = dna.replace('T', 'U');
 		
 		System.out.println(rna);

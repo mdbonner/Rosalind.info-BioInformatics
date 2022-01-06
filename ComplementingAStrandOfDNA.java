@@ -19,18 +19,20 @@ public class ComplementingAStrandOfDNA {
 		Scanner file = new Scanner(new File("rosalind_revc.txt"));
 		String dnaString = file.next();
 		
-		String reverseComplement = "";
+		// building a data structure for the complement of each DNA symbol
+		HashMap<Character, Character> complement = new HashMap<Character, Character>();
+		complement.put('A', 'T');
+		complement.put('T', 'A');
+		complement.put('C', 'G');
+		complement.put('G', 'C');
 
+		String reverseComplement = "";
+		
+		/* begin the for-loop from the end of the given DNA string 
+		 * and complement each symbol into the reverse complement DNA string.		 * 
+		 */
 		for (int i = dnaString.length() - 1; i >= 0; i--) {
-			if (dnaString.charAt(i) == 'A') {
-				reverseComplement += 'T';
-			} else if (dnaString.charAt(i) == 'T') {
-				reverseComplement += 'A';
-			} else if (dnaString.charAt(i) == 'C') {
-				reverseComplement += 'G';
-			} else if (dnaString.charAt(i) == 'G') {
-				reverseComplement += 'C';
-			}
+			reverseComplement += complement.get(dnaString.charAt(i));
 		}
 		System.out.println(reverseComplement);
 	}

@@ -25,15 +25,20 @@ public class FindingAMotifInDNA {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner file = new Scanner(new File("rosalind_subs.txt"));
-		String string = file.next();
-		String sub = file.next();
+		String dnaString = file.next();
+		String subString = file.next();
 
 		// indexOf returns -1 if string does not contain substring
-		int index = string.indexOf(sub);
-
-		while (index >= 0) {  
-			System.out.print(index + 1 + " ");
-			index = string.indexOf(sub, index + 1);
+		int index = dnaString.indexOf(subString);
+		
+		if (dnaString.contains(subString)) {
+			// loop through the DNA string to find each occurrence of the given substring.
+			while (index >= 0) {  
+				System.out.print(index + 1 + " ");
+				index = dnaString.indexOf(subString, index + 1);
+			}
+		} else {
+			System.out.println("DNA String does not contain the substring.");
 		}
 	}
 }

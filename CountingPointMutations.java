@@ -23,11 +23,15 @@ public class CountingPointMutations {
 		char[] array1 = new char[dnaString1.length()];
 		char[] array2 = new char[dnaString2.length()];
 		
+		// copy each nucleobase from the DNA string into an array
 		for (int i = 0; i < dnaString1.length(); i++) {
 			array1[i] = dnaString1.charAt(i);
 			array2[i] = dnaString2.charAt(i);
 		}
 		
+		/* interate through each element of the arrays and compare the nucleobases,
+		 * if the nucleobases match, then increment the hammingDistance variable
+		 */
 		for (int n = 0; n < array1.length; n++) {
 			if (array1[n] != array2[n]) {
 				hammingDistance++;
